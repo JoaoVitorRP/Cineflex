@@ -9,13 +9,18 @@ const Styles = createGlobalStyle`
         padding-top: 67px;
     }
     
-    h1, h2{
+    h1, h2, h3{
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
     }
 
     h2{
         font-size: 24px;
+        color: #293845;
+    }
+
+    h3{
+        color: #293845;
     }
 `;
 

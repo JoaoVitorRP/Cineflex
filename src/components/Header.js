@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import colors from "../styles/colors";
 
 export default function Header() {
@@ -6,7 +8,9 @@ export default function Header() {
 
   return (
     <TopBanner backgroundColor={GRAY} textColor={ORANGE}>
-      <h1>CINEFLEX</h1>
+      <StyledLink to="/">
+        <h1>CINEFLEX</h1>
+      </StyledLink>
     </TopBanner>
   );
 }
@@ -26,4 +30,17 @@ const TopBanner = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: "none";
+  color: inherit;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
