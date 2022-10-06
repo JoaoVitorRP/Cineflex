@@ -4,15 +4,15 @@ import axios from "axios";
 import styled from "styled-components";
 
 import loadingWheel from "../assets/loading.gif";
-import ScheduleMain from "../components/ScheduleMain";
-import ScheduleFooter from "../components/ScheduleFooter";
+import ScheduleMain from "../components/Screen2/ScheduleMain";
+import ScheduleFooter from "../components/Screen2/ScheduleFooter";
 
 export default function SchedulePage() {
   const { movieID } = useParams();
   const [movieInfo, setMovieInfo] = useState([]);
 
   useEffect(() => {
-    const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${movieID}/showtimes`;
+    const URL = `https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieID}/showtimes`;
     const promise = axios.get(URL);
 
     promise.then((resp) => setMovieInfo(resp.data));

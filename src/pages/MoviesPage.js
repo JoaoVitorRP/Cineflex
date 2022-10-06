@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Movie from "../components/Movie";
+import Movie from "../components/Screen1/Movie";
 
-export default function MoviePage() {
+export default function MoviesPage() {
   return (
     <Main>
       <h2>Selecione o filme</h2>

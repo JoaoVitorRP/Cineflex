@@ -1,4 +1,4 @@
-import DayInfo from "../components/DayInfo";
+import DayInfo from "./DayInfo";
 
 import styled from "styled-components";
 

@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import loadingWheel from "../assets/loading.gif";
+import loadingWheel from "../../assets/loading.gif";
 
 export default function Movie() {
   const [movieInfo, setMovieInfo] = useState([]);
 
   useEffect(() => {
-    const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
+    const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies";
     const promise = axios.get(URL);
 
     promise.then((resp) => setMovieInfo(resp.data));

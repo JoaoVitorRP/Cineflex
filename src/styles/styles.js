@@ -9,7 +9,7 @@ const Styles = createGlobalStyle`
         padding-top: 67px;
     }
     
-    h1, h2, h3{
+    h1, h2, h3, button, p, input{
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
     }
@@ -21,6 +21,16 @@ const Styles = createGlobalStyle`
 
     h3{
         color: #293845;
+    }
+
+    button{
+        background: #E8833A;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+
+        font-size: 18px;
+        color: #FFFFFF;
     }
 `;
 
