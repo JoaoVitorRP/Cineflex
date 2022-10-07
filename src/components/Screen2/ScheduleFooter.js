@@ -8,10 +8,10 @@ export default function ScheduleFooter(props) {
 
   return (
     <Footer backgroundColor={GRAY} borderColor={DARKGRAY}>
-      <MovieImgContainer>
+      <MovieImgContainer data-identifier="movie-img-preview">
         <img src={movieInfo.posterURL} alt={movieInfo.title} />
       </MovieImgContainer>
-      <h2>{movieInfo.title}</h2>
+      <h2 data-identifier="movie-and-session-infos-preview">{movieInfo.title}</h2>
     </Footer>
   );
 }

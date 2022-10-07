@@ -8,7 +8,7 @@ export default function DayInfo(props) {
 
   return daysInfo.map((obj) => (
     <React.Fragment key={obj.id}>
-      <h3>
+      <h3 data-identifier="session-date">
         {obj.weekday} - {obj.date}
       </h3>
       <ButtonContainer>

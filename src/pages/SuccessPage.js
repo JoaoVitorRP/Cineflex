@@ -26,7 +26,7 @@ export default function SuccessPage(props) {
         seatsNumber={seatsNumber}
         orderInfo={orderInfo}
       />
-      <Button onClick={reloadEverything}>Voltar para home</Button>
+      <Button onClick={reloadEverything} data-identifier="back-to-home-btn">Voltar para home</Button>
     </Main>
   );
 }

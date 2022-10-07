@@ -8,10 +8,10 @@ export default function SeatsFooter(props) {
 
   return (
     <Footer backgroundColor={GRAY} borderColor={DARKGRAY}>
-      <MovieImgContainer>
+      <MovieImgContainer data-identifier="movie-img-preview">
         <img src={sessionInfo.movie.posterURL} alt={sessionInfo.movie.title} />
       </MovieImgContainer>
-      <h2>{sessionInfo.movie.title}<br/>{sessionInfo.day.weekday} - {sessionInfo.name}</h2>
+      <h2 data-identifier="movie-and-session-infos-preview">{sessionInfo.movie.title}<br/>{sessionInfo.day.weekday} - {sessionInfo.name}</h2>
     </Footer>
   );
 }

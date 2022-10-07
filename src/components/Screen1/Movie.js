@@ -29,7 +29,7 @@ export default function Movie() {
 
   return movieInfo.map((obj) => (
     <Link key={obj.id} to={`/filme/${obj.id}`}>
-      <MovieCard>
+      <MovieCard data-identifier="movie-outdoor">
         <img src={obj.posterURL} alt={obj.title} />
       </MovieCard>
     </Link>

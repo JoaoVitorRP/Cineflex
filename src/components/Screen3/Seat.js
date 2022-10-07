@@ -53,6 +53,7 @@ export default function Seat(props) {
   return seatsInfo.map((seat) => (
     <SeatButton
       key={seat.id}
+      data-identifier="seat"
       backgroundColor={
         selected.includes(seat.id)
           ? GREEN

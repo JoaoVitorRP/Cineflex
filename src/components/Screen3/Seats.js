@@ -12,15 +12,15 @@ export default function Seats(props) {
     <SeatsContainer>
       <Seat seatsInfo={seatsInfo} setSelected={setSelected} selected={selected} seatsNumber={seatsNumber} setSeatsNumber={setSeatsNumber} />
       <ColorsCaption>
-        <Caption captionColor={GREEN} borderColor={DARKGREEN} />
+        <Caption captionColor={GREEN} borderColor={DARKGREEN} data-identifier="seat-selected-subtitle"/>
         <p>Selecionado</p>
       </ColorsCaption>
       <ColorsCaption>
-        <Caption captionColor={GRAY} borderColor={DARKGRAY} />
+        <Caption captionColor={GRAY} borderColor={DARKGRAY} data-identifier="seat-available-subtitle"/>
         <p>Disponível</p>
       </ColorsCaption>
       <ColorsCaption>
-        <Caption captionColor={YELLOW} borderColor={DARKYELLOW} />
+        <Caption captionColor={YELLOW} borderColor={DARKYELLOW} data-identifier="seat-unavailable-subtitle"/>
         <p>Indisponível</p>
       </ColorsCaption>
     </SeatsContainer>

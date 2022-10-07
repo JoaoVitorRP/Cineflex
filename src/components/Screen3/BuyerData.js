@@ -21,6 +21,7 @@ export default function BuyerData(props) {
       <input
         placeholder="Digite seu nome..."
         id="Name"
+        data-identifier="buyer-name-input"
         required
         onChange={(e) => setBuyerName(e.target.value)}
       ></input>
@@ -29,6 +30,7 @@ export default function BuyerData(props) {
         placeholder="Ex: 12345678910"
         type="number"
         id="CPF"
+        data-identifier="buyer-cpf-input"
         required
         onChange={(e) => checkCPF(e.target.value)}
       ></input>

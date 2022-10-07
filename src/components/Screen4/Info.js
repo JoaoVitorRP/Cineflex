@@ -6,7 +6,7 @@ export default function Info(props) {
   return (
     <InfoBox>
       <h3>Filme e sessão</h3>
-      <p>
+      <p data-identifier="movie-session-infos-reserve-finished">
         {sessionInfo.movie.title}
         <br />
         {sessionInfo.day.date} {sessionInfo.name}
@@ -14,11 +14,11 @@ export default function Info(props) {
 
       <h3>Ingressos</h3>
       {seatsNumber.map((num) => {
-        return <p key={num}>Assento {num}</p>;
+        return <p key={num} data-identifier="seat-infos-reserve-finished">Assento {num}</p>;
       })}
 
       <h3>Comprador</h3>
-      <p>
+      <p data-identifier="buyer-infos-reserve-finished">
         Nome: {orderInfo.name}
         <br />
         CPF: {orderInfo.cpf}

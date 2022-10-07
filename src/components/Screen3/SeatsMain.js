@@ -23,7 +23,6 @@ export default function SeatsMain(props) {
       cpf: buyerCPF,
     };
     setOrderInfo(order);
-    console.log(order);
 
     const req = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", order);
 
@@ -43,7 +42,7 @@ export default function SeatsMain(props) {
       />
       <form onSubmit={submitOrder}>
         <BuyerData setBuyerName={setBuyerName} setBuyerCPF={setBuyerCPF} />
-        <ConfirmButton type="submit">
+        <ConfirmButton type="submit" data-identifier="reservation-btn">
           Reservar assento(s)
         </ConfirmButton>
       </form>

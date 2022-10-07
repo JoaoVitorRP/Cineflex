@@ -6,7 +6,7 @@ export default function HourButtons(props) {
 
   return showtimes.map((times) => (
     <Link to={`/sessao/${times.id}`} key={times.id}>
-      <Button>{times.name}</Button>
+      <Button data-identifier="hour-minute-btn">{times.name}</Button>
     </Link>
   ));
 }
