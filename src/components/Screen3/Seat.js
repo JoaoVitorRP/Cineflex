@@ -3,33 +3,70 @@ import colors from "../../styles/colors";
 import styled from "styled-components";
 
 export default function Seat(props) {
-  const { seatsInfo } = props;
-  const { GRAY, DARKGRAY, YELLOW, DARKYELLOW } = colors;
+  const { seatsInfo, setSelected, selected, seatsNumber, setSeatsNumber } = props;
+  const { GREEN, DARKGREEN, GRAY, DARKGRAY, YELLOW, DARKYELLOW } = colors;
 
-  function setBackgroundColor(isAvailable){
-    switch(isAvailable) {
-      case true : return GRAY
-      case false : return YELLOW
-      default : return GRAY
+  function setBackgroundColor(isAvailable) {
+    switch (isAvailable) {
+      case true:
+        return GRAY;
+      case false:
+        return YELLOW;
+      default:
+        return GRAY;
     }
   }
 
-  function setBorderColor(isAvailable){
-    switch(isAvailable) {
-      case true : return DARKGRAY
-      case false : return DARKYELLOW
-      default : return DARKGRAY
+  function setBorderColor(isAvailable) {
+    switch (isAvailable) {
+      case true:
+        return DARKGRAY;
+      case false:
+        return DARKYELLOW;
+      default:
+        return DARKGRAY;
     }
   }
 
-  return seatsInfo.map((seats) => (
+  function pickSeat(seatId, seatNumber, isAvailable) {
+    let selectedCopy = [...selected];
+    let seatsNumberCopy = [...seatsNumber];
+
+    if (selected.includes(seatId)) {
+      selectedCopy = selected.filter((id) => id !== seatId);
+      seatsNumberCopy = seatsNumber.filter((num) => num !== seatNumber);
+    } else {
+      selectedCopy = [...selected, seatId];
+      seatsNumberCopy = [...seatsNumber, seatNumber];
+    }
+
+    if (isAvailable === false) {
+      selectedCopy = selected.filter((id) => id !== seatId);
+      seatsNumberCopy = seatsNumber.filter((num) => num !== seatNumber);
+      alert("Esse assento não está disponível");
+    }
+
+    setSelected(selectedCopy);
+    setSeatsNumber(seatsNumberCopy);
+  }
+
+  return seatsInfo.map((seat) => (
     <SeatButton
-      key={seats.id}
-      backgroundColor={setBackgroundColor(seats.isAvailable)}
-      borderColor={setBorderColor(seats.isAvailable)}
-      cursorStyle={seats.isAvailable ? "pointer" : "default"}
+      key={seat.id}
+      backgroundColor={
+        selected.includes(seat.id)
+          ? GREEN
+          : setBackgroundColor(seat.isAvailable)
+      }
+      borderColor={
+        selected.includes(seat.id)
+          ? DARKGREEN
+          : setBorderColor(seat.isAvailable)
+      }
+      cursorStyle={seat.isAvailable ? "pointer" : "default"}
+      onClick={() => pickSeat(seat.id, seat.name, seat.isAvailable)}
     >
-      {seats.name}
+      {seat.name}
     </SeatButton>
   ));
 }

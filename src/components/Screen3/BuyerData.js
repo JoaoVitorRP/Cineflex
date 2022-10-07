@@ -1,12 +1,38 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function BuyerData() {
+export default function BuyerData(props) {
+  const { setBuyerName, setBuyerCPF } = props;
+
+  const [errorText, setErrorText] = useState("");
+
+  function checkCPF(number) {
+    if (number.length === 11) {
+      setErrorText("");
+      setBuyerCPF(number);
+    } else {
+      setErrorText("Insira um número válido!");
+    }
+  }
+
   return (
     <DataContainer>
-      <h3>Nome do comprador:</h3>
-      <input placeholder="Digite seu nome..."></input>
-      <h3>CPF do comprador:</h3>
-      <input placeholder="Digite seu CPF..."></input>
+      <label htmlFor="Name">Nome do comprador:</label>
+      <input
+        placeholder="Digite seu nome..."
+        id="Name"
+        required
+        onChange={(e) => setBuyerName(e.target.value)}
+      ></input>
+      <label htmlFor="CPF">CPF do comprador:</label>
+      <input
+        placeholder="Ex: 12345678910"
+        type="number"
+        id="CPF"
+        required
+        onChange={(e) => checkCPF(e.target.value)}
+      ></input>
+      <p>{errorText}</p>
     </DataContainer>
   );
 }
@@ -17,7 +43,7 @@ const DataContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  h3 {
+  label {
     font-size: 18px;
     margin-bottom: 4px;
   }
@@ -38,5 +64,10 @@ const DataContainer = styled.div`
     font-size: 18px;
     font-style: italic;
     color: #afafaf;
+  }
+
+  p {
+    margin-top: -10px;
+    color: #d0342c;
   }
 `;

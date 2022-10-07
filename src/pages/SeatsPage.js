@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -7,9 +7,11 @@ import loadingWheel from "../assets/loading.gif";
 import SeatsMain from "../components/Screen3/SeatsMain";
 import SeatsFooter from "../components/Screen3/SeatsFooter";
 
-export default function SeatsPage() {
+export default function SeatsPage(props) {
+  const { sessionInfo, setSessionInfo, seatsNumber, setSeatsNumber, setOrderInfo } = props;
+
   const { sessionID } = useParams();
-  const [sessionInfo, setSessionInfo] = useState([]);
+
 
   useEffect(() => {
     const URL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionID}/seats`;
@@ -19,7 +21,7 @@ export default function SeatsPage() {
     promise.catch(() =>
       alert("Um erro ocorreu, por favor recarregue a página")
     );
-  }, [sessionID]);
+  }, []);
 
   if (sessionInfo.length === 0) {
     return (
@@ -32,8 +34,8 @@ export default function SeatsPage() {
 
   return (
     <SeatsScreen>
-        <SeatsMain seatsInfo={sessionInfo.seats}/>
-        <SeatsFooter sessionInfo={sessionInfo}/>
+      <SeatsMain seatsInfo={sessionInfo.seats} seatsNumber={seatsNumber} setSeatsNumber={setSeatsNumber} setOrderInfo={setOrderInfo}/>
+      <SeatsFooter sessionInfo={sessionInfo} />
     </SeatsScreen>
   );
 }
@@ -53,6 +55,6 @@ const LoadingScreen = styled.div`
 `;
 
 const SeatsScreen = styled.div`
-    display: flex;
-    justify-content: center;
-`
+  display: flex;
+  justify-content: center;
+`;

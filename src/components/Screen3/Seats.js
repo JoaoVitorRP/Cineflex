@@ -4,13 +4,13 @@ import colors from "../../styles/colors";
 import styled from "styled-components";
 
 export default function Seats(props) {
-  const { seatsInfo } = props;
+  const { seatsInfo, setSelected, selected, seatsNumber, setSeatsNumber } = props;
 
   const { GREEN, DARKGREEN, GRAY, DARKGRAY, YELLOW, DARKYELLOW } = colors;
 
   return (
     <SeatsContainer>
-      <Seat seatsInfo={seatsInfo} />
+      <Seat seatsInfo={seatsInfo} setSelected={setSelected} selected={selected} seatsNumber={seatsNumber} setSeatsNumber={setSeatsNumber} />
       <ColorsCaption>
         <Caption captionColor={GREEN} borderColor={DARKGREEN} />
         <p>Selecionado</p>
@@ -54,7 +54,6 @@ const Caption = styled.div`
   border: 1px solid ${(props) => props.borderColor};
   border-radius: 12px;
   margin: 9px 4px;
-  cursor: pointer;
 
   font-size: 11px;
 

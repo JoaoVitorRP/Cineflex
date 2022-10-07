@@ -1,16 +1,20 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
 import colors from "../styles/colors";
 
 export default function Header() {
   const { GRAY, ORANGE } = colors;
+  const navigate = useNavigate();
+
+  function reloadEverything(){
+    navigate("/");
+    window.location.reload();
+  }
 
   return (
     <TopBanner backgroundColor={GRAY} textColor={ORANGE}>
-      <StyledLink to="/">
-        <h1>CINEFLEX</h1>
-      </StyledLink>
+        <h1 onClick={reloadEverything}>CINEFLEX</h1>
     </TopBanner>
   );
 }
@@ -19,6 +23,7 @@ const TopBanner = styled.header`
   width: 100vw;
   height: 67px;
   background: ${(props) => props.backgroundColor};
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   font-size: 34px;
   color: ${(props) => props.textColor};
@@ -30,17 +35,8 @@ const TopBanner = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-`;
 
-const StyledLink = styled(Link)`
-  text-decoration: "none";
-  color: inherit;
-
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
+  h1{
+    cursor: pointer;
   }
 `;

@@ -19,7 +19,7 @@ export default function SchedulePage() {
     promise.catch(() =>
       alert("Um erro ocorreu, por favor recarregue a página")
     );
-  }, [movieID]);
+  }, []);
 
   if (movieInfo.length === 0) {
     return (

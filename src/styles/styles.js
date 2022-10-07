@@ -9,7 +9,7 @@ const Styles = createGlobalStyle`
         padding-top: 67px;
     }
     
-    h1, h2, h3, button, p, input{
+    h1, h2, h3, button, p, input, label{
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
     }
@@ -19,7 +19,7 @@ const Styles = createGlobalStyle`
         color: #293845;
     }
 
-    h3{
+    h3, label{
         color: #293845;
     }
 
