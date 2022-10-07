@@ -1,20 +1,27 @@
 import styled from "styled-components";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import arrow from "../assets/arrow-back.svg";
 import colors from "../styles/colors";
 
 export default function Header() {
   const { GRAY, ORANGE } = colors;
   const navigate = useNavigate();
-
-  function reloadEverything(){
+  const location = useLocation();
+  
+  function reloadEverything() {
     navigate("/");
     window.location.reload();
   }
 
   return (
-    <TopBanner backgroundColor={GRAY} textColor={ORANGE}>
-        <h1 onClick={reloadEverything}>CINEFLEX</h1>
+    <TopBanner
+      backgroundColor={GRAY}
+      textColor={ORANGE}
+      arrowDisplay={location.pathname === "/" ? "none" : "inherit"}
+    >
+      <img src={arrow} alt="Voltar" onClick={() => navigate(-1)} />
+      <h1 onClick={reloadEverything}>CINEFLEX</h1>
     </TopBanner>
   );
 }
@@ -36,7 +43,16 @@ const TopBanner = styled.header`
   top: 0;
   left: 0;
 
-  h1{
+  img {
+    width: 40px;
+    cursor: pointer;
+    display: ${(props) => props.arrowDisplay};
+
+    position: absolute;
+    left: 30px;
+  }
+
+  h1 {
     cursor: pointer;
   }
 `;
