@@ -3,7 +3,14 @@ import colors from "../../styles/colors";
 import styled from "styled-components";
 
 export default function Seat(props) {
-  const { seatsInfo, setSelected, selected, seatsNumber, setSeatsNumber } = props;
+  const {
+    seatsInfo,
+    setSelected,
+    selected,
+    seatsNumber,
+    setSeatsNumber,
+    setSeatValid,
+  } = props;
   const { GREEN, DARKGREEN, GRAY, DARKGRAY, YELLOW, DARKYELLOW } = colors;
 
   function setBackgroundColor(isAvailable) {
@@ -35,14 +42,17 @@ export default function Seat(props) {
     if (selected.includes(seatId)) {
       selectedCopy = selected.filter((id) => id !== seatId);
       seatsNumberCopy = seatsNumber.filter((num) => num !== seatNumber);
+      setSeatValid(false);
     } else {
       selectedCopy = [...selected, seatId];
       seatsNumberCopy = [...seatsNumber, seatNumber];
+      setSeatValid(true);
     }
 
     if (isAvailable === false) {
       selectedCopy = selected.filter((id) => id !== seatId);
       seatsNumberCopy = seatsNumber.filter((num) => num !== seatNumber);
+      setSeatValid(false);
       alert("Esse assento não está disponível");
     }
 

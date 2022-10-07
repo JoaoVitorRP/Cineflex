@@ -4,23 +4,49 @@ import colors from "../../styles/colors";
 import styled from "styled-components";
 
 export default function Seats(props) {
-  const { seatsInfo, setSelected, selected, seatsNumber, setSeatsNumber } = props;
+  const {
+    seatsInfo,
+    setSelected,
+    selected,
+    seatsNumber,
+    setSeatsNumber,
+    setSeatValid,
+  } = props;
 
   const { GREEN, DARKGREEN, GRAY, DARKGRAY, YELLOW, DARKYELLOW } = colors;
 
   return (
     <SeatsContainer>
-      <Seat seatsInfo={seatsInfo} setSelected={setSelected} selected={selected} seatsNumber={seatsNumber} setSeatsNumber={setSeatsNumber} />
+      <Seat
+        seatsInfo={seatsInfo}
+        setSelected={setSelected}
+        selected={selected}
+        seatsNumber={seatsNumber}
+        setSeatsNumber={setSeatsNumber}
+        setSeatValid={setSeatValid}
+      />
       <ColorsCaption>
-        <Caption captionColor={GREEN} borderColor={DARKGREEN} data-identifier="seat-selected-subtitle"/>
+        <Caption
+          captionColor={GREEN}
+          borderColor={DARKGREEN}
+          data-identifier="seat-selected-subtitle"
+        />
         <p>Selecionado</p>
       </ColorsCaption>
       <ColorsCaption>
-        <Caption captionColor={GRAY} borderColor={DARKGRAY} data-identifier="seat-available-subtitle"/>
+        <Caption
+          captionColor={GRAY}
+          borderColor={DARKGRAY}
+          data-identifier="seat-available-subtitle"
+        />
         <p>Disponível</p>
       </ColorsCaption>
       <ColorsCaption>
-        <Caption captionColor={YELLOW} borderColor={DARKYELLOW} data-identifier="seat-unavailable-subtitle"/>
+        <Caption
+          captionColor={YELLOW}
+          borderColor={DARKYELLOW}
+          data-identifier="seat-unavailable-subtitle"
+        />
         <p>Indisponível</p>
       </ColorsCaption>
     </SeatsContainer>

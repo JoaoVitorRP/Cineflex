@@ -18,7 +18,7 @@ export default function App() {
     <BrowserRouter>
       <Reset />
       <Styles />
-      <Header />
+      <Header setSeatsNumber={setSeatsNumber} />
       <Routes>
         <Route path="/" element={<MoviesPage />} />
         <Route path="/filme/:movieID" element={<SchedulePage />} />

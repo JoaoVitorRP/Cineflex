@@ -4,10 +4,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import arrow from "../assets/arrow-back.svg";
 import colors from "../styles/colors";
 
-export default function Header() {
+export default function Header(props) {
+  const {setSeatsNumber} = props;
   const { GRAY, ORANGE } = colors;
   const navigate = useNavigate();
   const location = useLocation();
+
+  function goToPreviousPage(){
+    navigate(-1);
+    setSeatsNumber([]);
+  }
   
   function reloadEverything() {
     navigate("/");
@@ -20,7 +26,7 @@ export default function Header() {
       textColor={ORANGE}
       arrowDisplay={location.pathname === "/" ? "none" : "inherit"}
     >
-      <img src={arrow} alt="Voltar" onClick={() => navigate(-1)} />
+      <img src={arrow} alt="Voltar" onClick={goToPreviousPage} />
       <h1 onClick={reloadEverything}>CINEFLEX</h1>
     </TopBanner>
   );

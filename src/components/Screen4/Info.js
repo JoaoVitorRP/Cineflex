@@ -3,6 +3,9 @@ import styled from "styled-components";
 export default function Info(props) {
   const { sessionInfo, seatsNumber, orderInfo } = props;
 
+  let CPF = orderInfo.cpf.toString();
+  CPF = CPF.slice(0, 3) + "." + CPF.slice(3,6) + "." + CPF.slice(6,9) + "-" + CPF.slice(9);
+
   return (
     <InfoBox>
       <h3>Filme e sessão</h3>
@@ -21,7 +24,7 @@ export default function Info(props) {
       <p data-identifier="buyer-infos-reserve-finished">
         Nome: {orderInfo.name}
         <br />
-        CPF: {orderInfo.cpf}
+        CPF: {CPF}
       </p>
     </InfoBox>
   );

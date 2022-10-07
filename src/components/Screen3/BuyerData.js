@@ -2,17 +2,19 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function BuyerData(props) {
-  const { setBuyerName, setBuyerCPF } = props;
+  const { setBuyerName, setBuyerCPF, setCpfValid } = props;
 
   const [errorText, setErrorText] = useState("");
 
   function checkCPF(number) {
     if (number.length === 11) {
       setErrorText("");
-      setBuyerCPF(number);
+      setCpfValid(true);
     } else {
+      setCpfValid(false);
       setErrorText("Insira um número válido!");
     }
+    setBuyerCPF(number);
   }
 
   return (

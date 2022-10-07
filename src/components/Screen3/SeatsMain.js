@@ -13,8 +13,10 @@ export default function SeatsMain(props) {
   const [selected, setSelected] = useState([]);
   const [buyerName, setBuyerName] = useState([]);
   const [buyerCPF, setBuyerCPF] = useState([]);
+  const [cpfValid, setCpfValid] = useState(false);
+  const [seatValid, setSeatValid] = useState(false);
 
-  function submitOrder(e){
+  function submitOrder(e) {
     e.preventDefault();
 
     const order = {
@@ -24,7 +26,10 @@ export default function SeatsMain(props) {
     };
     setOrderInfo(order);
 
-    const req = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", order);
+    const req = axios.post(
+      "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",
+      order
+    );
 
     req.then(() => navigate("/sucesso"));
     req.catch((err) => alert(err.response.data.message));
@@ -39,10 +44,19 @@ export default function SeatsMain(props) {
         selected={selected}
         seatsNumber={seatsNumber}
         setSeatsNumber={setSeatsNumber}
+        setSeatValid={setSeatValid}
       />
       <form onSubmit={submitOrder}>
-        <BuyerData setBuyerName={setBuyerName} setBuyerCPF={setBuyerCPF} />
-        <ConfirmButton type="submit" data-identifier="reservation-btn">
+        <BuyerData
+          setBuyerName={setBuyerName}
+          setBuyerCPF={setBuyerCPF}
+          setCpfValid={setCpfValid}
+        />
+        <ConfirmButton
+          type="submit"
+          data-identifier="reservation-btn"
+          disabled={!(cpfValid && seatValid)}
+        >
           Reservar assento(s)
         </ConfirmButton>
       </form>
